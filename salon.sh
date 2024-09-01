@@ -22,22 +22,25 @@ function MAIN_MENU {
     #get service next name
     NAME=$($PSQL "SELECT name FROM services WHERE service_id=$ID")
   done
-  #read user selection
-  read USER_SELECTION
+  #get service id
+  read SERVICE_ID_SELECTED
   #if 1
-  if [[ $USER_SELECTION == "1" ]]
+  if [[ $SERVICE_ID_SELECTED == "1" ]]
   then
     #go to hair styling
+    GET_INFO
     HAIR_STYLING
   #else if 2
-  elif [[ $USER_SELECTION == "2" ]]
+  elif [[ $SERVICE_ID_SELECTED == "2" ]]
   then
     #go to manicure
+    GET_INFO
     MANICURE
   #else if 3
-  elif [[ $USER_SELECTION == "3" ]]
+  elif [[ $SERVICE_ID_SELECTED == "3" ]]
   then
     #go to pedicure
+    GET_INFO
     PEDICURE
   #else
   else
@@ -45,15 +48,19 @@ function MAIN_MENU {
     MAIN_MENU "fail"
   fi
 }
+function GET_INFO {
+  #get phone number
+  echo -e "\nPlease Enter Your Phone Number"
+  #logic for if they aren't a customer
+}
 function HAIR_STYLING {
-  echo "Hair styling"
+  echo "1"
 }
 function MANICURE {
-  echo "Manicure"
+  echo "2"
 }
 function PEDICURE {
-  echo "Pedicure"
+  echo "3"
 }
-
 echo -e "\n~~~~ Salon ~~~~~\n"
 MAIN_MENU
